@@ -18,7 +18,7 @@ export default function Formuario () {
         tokenLocal(data.token);
         userLocal(data); 
         
-        if (!data.membership) {navigate("/subscription")}
+        if (!data.membership) {navigate("/subscriptions")}
         else {navigate("/home")}
     }
 
