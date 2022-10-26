@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 
 export default function CardPlano ({infos}) {
     return (
-        <Card>
-            <Img src={infos.image} alt="imagem o plano"/>
-            <Texto>{infos.price}</Texto>
-        </Card>
+        <Link to={`./${infos.id}`}>
+            <Card>
+                <Img src={infos.image} alt="imagem o plano"/>
+                <Texto>{infos.price}</Texto>
+            </Card>
+        </Link>
     )
 }
 

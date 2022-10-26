@@ -33,6 +33,7 @@ function App() {
             <Route path="/" element={<PageLogin/>}/>
             <Route path="/sign-up" element={<PageCadastro/>}/>
             <Route path="/subscriptions" element={<PageIncricao/>}/>
+            <Route path="/subscriptions/:idPlano" />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

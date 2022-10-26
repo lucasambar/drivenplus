@@ -8,12 +8,8 @@ import CardPlano from "./CardPlano"
 export default function PageIncricao () {
     const {token} = useContext(UserContext)
     const [planos, setPlanos] = useState(undefined)
-
-    console.log(planos)
     
     useEffect(() => {
-        console.log(token)
-
         const config = {
             headers: {
                 "Authorization": `Bearer ${token}`
