@@ -14,7 +14,7 @@ function App() {
   function tokenLocal (toke) {
 
       localStorage.setItem("token", JSON.stringify(toke))
-      setToken(localStorage.getItem("token"))
+      setToken(JSON.parse(localStorage.getItem("token")))
   }
 
   function userLocal (usuario) {

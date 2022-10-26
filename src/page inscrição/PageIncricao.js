@@ -7,11 +7,13 @@ import CardPlano from "./CardPlano"
 
 export default function PageIncricao () {
     const {token} = useContext(UserContext)
-    const [planos, setPlanos] = useState({})
+    const [planos, setPlanos] = useState(undefined)
 
     console.log(planos)
     
     useEffect(() => {
+        console.log(token)
+
         const config = {
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -27,7 +29,7 @@ export default function PageIncricao () {
         <Background>
             <Texto>Escolha seu Plano</Texto>
             <Container>
-                <CardPlano/>
+                {planos ? planos.map(infos => <CardPlano infos={infos}/>) : <p>oi</p>}
             </Container>
         </Background>
     )
@@ -35,7 +37,7 @@ export default function PageIncricao () {
 
 const Background = styled.div`
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: ${CORES.background};
 
     display: flex;
@@ -43,6 +45,7 @@ const Background = styled.div`
     align-items: center;
 
     padding-top: 30px;
+    padding-bottom: 10px;
 `
 
 const Texto = styled.div`
@@ -56,4 +59,10 @@ const Texto = styled.div`
 
     display: block;
 `
-const Container = styled.div``
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-top: 20px;
+`

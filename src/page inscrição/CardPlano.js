@@ -2,11 +2,11 @@ import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 
-export default function CardPlano () {
+export default function CardPlano ({infos}) {
     return (
         <Card>
-            <Img alt="imagem o plano"/>
-            <Texto>R$ 39,99</Texto>
+            <Img src={infos.image} alt="imagem o plano"/>
+            <Texto>{infos.price}</Texto>
         </Card>
     )
 }
@@ -20,10 +20,12 @@ const Card = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    cursor: pointer;
 `
 const Img = styled.img`
-    height: 28px;
-    width: 97px;
+    height: 95.13327026367188px;
+    width: 139.37762451171875px;
 `
 const Texto = styled.p`
     font-family: Roboto;
