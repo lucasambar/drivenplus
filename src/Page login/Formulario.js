@@ -1,12 +1,24 @@
+import { useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 export default function Formuario () {
+    const [obj, setObj] = useState({
+        email: "",
+        password:"",
+    })
+
+    console.log(obj)
+
     return (
         <Form>
-            <Input type="email" placeholder="E-mail"/>
-            <Input type="password" placeholder="Senha"/>
-            <Button>Entrar</Button>
+            <Input type="email" placeholder="E-mail" id="email"
+            onChange={(e) => setObj({...obj, email: e.target.value})} value={obj.email}/>
+
+            <Input type="password" placeholder="Senha" id="senha"
+            onChange={(e) => setObj({...obj, password: e.target.value})} value={obj.password}/>
+
+            <Button type="submit">Entrar</Button>
         </Form>
     )
 }
@@ -14,9 +26,9 @@ export default function Formuario () {
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 
-
+    margin-top: 100px;
 `
 const Input = styled.input`
     height: 52px;
@@ -63,5 +75,7 @@ const Button = styled.button`
     color: ${CORES.branco};
 
     cursor: pointer;
+
+    margin-top: 8px;
 `
 

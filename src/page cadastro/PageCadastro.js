@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CORES from "../constantes/cores";
 import Formuario from "./Formulario";
@@ -6,7 +7,10 @@ export default function PageCadastro() {
     return (
         <Background>
             <Formuario/>
-            <Texto>Já possuí uma conta? Entre</Texto>
+
+            <Link to="/">
+                <Texto>Já possuí uma conta? Entre</Texto>
+            </Link>
         </Background>
     )
 }

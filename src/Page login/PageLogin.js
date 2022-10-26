@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
@@ -8,9 +9,13 @@ import Formuario from "./Formulario"
 export default function PageLogin () {
     return (
         <Background>
-            <Img src={logo}/>
+            <img src={logo} alt="logo"/>
             <Formuario/>
-            <Texto>Não possuí uma conta? Cadastre-se</Texto>
+            
+            <Link to="/sign-up">
+                <Texto>Não possuí uma conta? Cadastre-se</Texto>
+            </Link>
+
         </Background>
     )
 }
@@ -26,10 +31,7 @@ const Background = styled.div`
     flex-direction: column;
     align-items: center;
 `
-const Img = styled.img`
-    display: block;
-    margin: auto;
-`
+
 const Texto = styled.p`
     font-family: Roboto;
     font-size: 14px;
@@ -44,4 +46,6 @@ const Texto = styled.p`
     margin: auto;
 
     cursor: pointer;
+
+    margin-top: 24px;
 `

@@ -1,14 +1,42 @@
+import axios from "axios"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 export default function Formuario () {
+    let navigate = useNavigate()
+
+    const [obj, setObj] = useState({
+        email:"",
+        name:"",
+        cpf:"",
+        password:""
+    })
+
+    function cadastrar (event) {
+        event.preventDefault()
+
+        let promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up", obj)
+        promessa.then(() => navigate("/"))
+        promessa.catch(erro => console.log(erro.response.data))
+    }
+
     return (
-        <Form>
-            <Input type="text" placeholder="Nome"/>
-            <Input type="text" placeholder="CPF"/>
-            <Input type="email" placeholder="E-mail"/>
-            <Input type="password" placeholder="Senha"/>
-            <Button>Entrar</Button>
+        <Form onSubmit={cadastrar}>
+            <Input type="text" placeholder="Nome"
+            onChange={(e) => setObj({...obj, name: e.target.value})} value={obj.name}/>
+
+            <Input type="text" placeholder="CPF"
+            onChange={(e) => setObj({...obj, cpf: e.target.value})} value={obj.cpf}/>
+
+            <Input type="email" placeholder="E-mail"
+            onChange={(e) => setObj({...obj, email: e.target.value})} value={obj.email}/>
+
+            <Input type="password" placeholder="Senha"
+            onChange={(e) => setObj({...obj, password: e.target.value})} value={obj.password}/>
+
+            <Button type="submit">Entrar</Button>
         </Form>
     )
 }
