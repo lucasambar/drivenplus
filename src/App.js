@@ -8,15 +8,13 @@ import PageLogin from "./Page login/PageLogin";
 import UserContext from "./providers/user";
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState("")
   const [token, setToken] = useState("")
 
   function tokenLocal (toke) {
-  
-    if (token.length === 0) {
-      setToken(toke)
+
       localStorage.setItem("token", JSON.stringify(toke))
-    }
+      setToken(localStorage.getItem("token"))
   }
 
   function userLocal (usuario) {

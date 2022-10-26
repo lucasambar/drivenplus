@@ -1,8 +1,28 @@
+import axios from "axios"
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import UserContext from "../providers/user"
 import CardPlano from "./CardPlano"
 
 export default function PageIncricao () {
+    const {token} = useContext(UserContext)
+    const [planos, setPlanos] = useState({})
+
+    console.log(planos)
+    
+    useEffect(() => {
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+
+        const promessa = axios.get("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships", config)
+        promessa.then(response => setPlanos(response.data))
+        promessa.catch(erro => console.log(erro.response.data))
+    },[token])
+
     return (
         <Background>
             <Texto>Escolha seu Plano</Texto>
