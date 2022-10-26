@@ -1,17 +1,37 @@
-import { useState } from "react"
+import axios from "axios"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import UserContext from "../providers/user"
 
 export default function Formuario () {
+    const {tokenLocal, userLocal} = useContext(UserContext)
+    const navigate = useNavigate()
+
     const [obj, setObj] = useState({
         email: "",
         password:"",
     })
 
-    console.log(obj)
+    function axiosThen (data) {
+        tokenLocal(data.token);
+        userLocal(data); 
+        
+        if (!data.membership) {navigate("/subscription")}
+        else {navigate("/home")}
+    }
+
+    function logar (event) {
+        event.preventDefault()
+
+        const promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", obj)
+        promessa.then(response => axiosThen(response.data))
+        promessa.catch(erro => console.log(erro.response.data))
+    }
 
     return (
-        <Form>
+        <Form onSubmit={logar}>
             <Input type="email" placeholder="E-mail" id="email"
             onChange={(e) => setObj({...obj, email: e.target.value})} value={obj.email}/>
 
