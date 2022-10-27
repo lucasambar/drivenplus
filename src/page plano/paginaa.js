@@ -5,16 +5,19 @@ import back from "../imagens/back.png"
 
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import { useNavigate } from "react-router-dom"
 
 export default function Conteudo ({plano}) {
+    const navigate = useNavigate()
+
     return (
         <Background>
             <Seta>
-                <img src={back} alt="seta voltar"/>
+                <img src={back} alt="seta voltar" onClick={() => navigate("/subscriptions")}/>
             </Seta>
             <Topo plano={plano}/> 
             <Infos perks={plano.perks} preco={plano.price}/>
-            <Formulario/>
+            <Formulario id={plano.id}/>
         </Background>
     )
 }
@@ -27,6 +30,8 @@ const Background = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding-bottom: 10px;
 `
 const Seta = styled.div`
     width: 100%;

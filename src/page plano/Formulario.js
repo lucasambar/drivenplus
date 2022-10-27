@@ -1,15 +1,34 @@
+import { useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
-export default function Formulario () {
+export default function Formulario ({id}) {
+    const [cartao, setCartao] = useState({
+        membershipId: id,
+        cardName: "",
+        cardNumber: "",
+        securityNumber: "",
+        expirationNumber: "",
+    })
+
+
+
     return (
         <Form>
-            <InputG type="text" placeholder="Nome impresso no cartão"/>
-            <InputG type="number" placeholder="Digitos do cartão"/>
+            <InputG type="text" placeholder="Nome impresso no cartão"
+            onChange={(e)=> setCartao({...cartao, cardName: e.target.value})} value={cartao.cardName}/>
+
+            <InputG type="text" placeholder="Digitos do cartão"
+            onChange={(e)=> setCartao({...cartao, cardNumber: e.target.value})} value={cartao.cardNumber}/>
+
             <div>
-                <InputP type="number" placeholder="Código de segurança"/>
-                <InputP type="number" placeholder="Validade"/>
+                <InputP type="number" placeholder="Código de segurança"
+                onChange={(e)=> setCartao({...cartao, securityNumber: Number(e.target.value)})} value={cartao.securityNumber}/>
+
+                <InputP type="text" placeholder="Validade"
+                onChange={(e)=> setCartao({...cartao, expirationNumber: e.target.value})} value={cartao.expirationNumber}/>
             </div>
+
             <Botao type="submit">ASSINAR</Botao>
         </Form>
     )

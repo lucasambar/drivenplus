@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./constantes/GlobalStyle";
 import PageCadastro from "./page cadastro/PageCadastro";
@@ -9,18 +8,11 @@ import PagePlano from "./page plano/PagePlano";
 import UserContext from "./providers/user";
 
 function App() {
-  const [user, setUser] = useState("")
-  const [token, setToken] = useState("")
 
-  function tokenLocal (toke) {
-
-      localStorage.setItem("token", JSON.stringify(toke))
-      setToken(JSON.parse(localStorage.getItem("token")))
-  }
-
+// lembrar de fazer context do user
 
   return (
-    <UserContext.Provider value={{user, token, tokenLocal}}>
+    <UserContext.Provider >
       <BrowserRouter>
         <GlobalStyle/>
         <Routes>

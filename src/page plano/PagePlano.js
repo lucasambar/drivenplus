@@ -24,8 +24,6 @@ export default function PagePlano () {
         promessa.catch(erro => console.log(erro.response.data))
         
     }, [params, token])
-
-
     
     return (
         <>
