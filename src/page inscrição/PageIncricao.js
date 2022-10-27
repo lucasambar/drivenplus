@@ -25,7 +25,7 @@ export default function PageIncricao () {
         <Background>
             <Texto>Escolha seu Plano</Texto>
             <Container>
-                {planos ? planos.map(infos => <CardPlano infos={infos}/>) : <p>oi</p>}
+                {planos ? planos.map(infos => <CardPlano infos={infos} key={infos.id}/>) : <p>oi</p>}
             </Container>
         </Background>
     )
