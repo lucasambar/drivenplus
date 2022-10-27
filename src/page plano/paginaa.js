@@ -7,6 +7,7 @@ import styled from "styled-components"
 import CORES from "../constantes/cores"
 import { useNavigate } from "react-router-dom"
 
+
 export default function Conteudo ({plano}) {
     const navigate = useNavigate()
 
