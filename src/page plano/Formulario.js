@@ -74,4 +74,6 @@ const Botao = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: ${CORES.branco};
+
+    cursor: pointer;
 `

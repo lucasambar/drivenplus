@@ -4,7 +4,9 @@ import tasks from "../imagens/tasks.png"
 import money from "../imagens/money.png"
 import CORES from "../constantes/cores"
 
-export default function Infos () {
+export default function Infos ({perks, preco}) {
+    let contador = 0
+
     return (
     <Container>
         <Div espaço={false}>
@@ -12,8 +14,8 @@ export default function Infos () {
                 <img src={tasks} alt="icone tasks rosa"/>
                 <Titulo>Benefícios:</Titulo>
             </div>
-            <Texto>1. Brindes exclusivos</Texto>
-            <Texto>2. Materiais bônus de web</Texto>
+            {perks.map((info) => { contador ++
+                return <Texto key={info.id}>{contador}. {info.title}</Texto>})}
         </Div>
 
         <Div espaço={true}>
@@ -21,7 +23,7 @@ export default function Infos () {
                 <img src={money} alt="icone money rosa"/>
                 <Titulo>Preço:</Titulo>
             </div>
-            <Texto>R$ 39,99 cobrados mensalmente</Texto>
+            <Texto>R$ {preco} cobrados mensalmente</Texto>
         </Div>
     </Container>
     )

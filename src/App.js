@@ -18,16 +18,9 @@ function App() {
       setToken(JSON.parse(localStorage.getItem("token")))
   }
 
-  function userLocal (usuario) {
-
-    if (user.length === 0) {
-      setUser(usuario)
-      localStorage.setItem("user", JSON.stringify(usuario))
-    }
-  }
 
   return (
-    <UserContext.Provider value={{user, token, tokenLocal, userLocal}}>
+    <UserContext.Provider value={{user, token, tokenLocal}}>
       <BrowserRouter>
         <GlobalStyle/>
         <Routes>

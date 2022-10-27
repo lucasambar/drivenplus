@@ -1,12 +1,12 @@
 import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 import UserContext from "../providers/user"
 import CardPlano from "./CardPlano"
 
 export default function PageIncricao () {
-    const {token} = useContext(UserContext)
+    const token = JSON.parse(localStorage.getItem("token"))
     const [planos, setPlanos] = useState(undefined)
     
     useEffect(() => {

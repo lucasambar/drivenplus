@@ -2,10 +2,10 @@ import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 export default function Topo ({plano}) {
-   return (
+    return (
      <Container>
-        <Img  alt="logo"/>
-        <Texto>Driven Plus</Texto>
+        <Img src={plano.image} alt="logo"/>
+        <Texto>{plano.name}</Texto>
     </Container>
     )
 }
