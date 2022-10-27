@@ -19,6 +19,7 @@ export default function PagePlano () {
             }
         }
 
+        
         const promessa = axios.get(link, config)
         promessa.then(response => setPlano(response.data))
         promessa.catch(erro => console.log(erro.response.data))

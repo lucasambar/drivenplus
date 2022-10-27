@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
@@ -7,26 +8,40 @@ export default function Formulario ({id}) {
         membershipId: id,
         cardName: "",
         cardNumber: "",
-        securityNumber: "",
-        expirationNumber: "",
+        securityNumber: undefined,
+        expirationDate: ""
     })
 
+    const token = JSON.parse(localStorage.getItem("token"))
+    console.log(cartao)
+    function assinar (event) {
+        event.preventDefault()
 
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        
+        const promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", cartao, config)
+        promessa.then(response => console.log(response.data))
+        promessa.catch(erro => console.log(erro.response.data))
+    }
 
     return (
-        <Form>
-            <InputG type="text" placeholder="Nome impresso no cartão"
+        <Form onSubmit={assinar}>
+            <InputG type="text" placeholder="Nome impresso no cartão" 
             onChange={(e)=> setCartao({...cartao, cardName: e.target.value})} value={cartao.cardName}/>
 
-            <InputG type="text" placeholder="Digitos do cartão"
+            <InputG type="text" placeholder="Digitos do cartão" 
             onChange={(e)=> setCartao({...cartao, cardNumber: e.target.value})} value={cartao.cardNumber}/>
 
             <div>
-                <InputP type="number" placeholder="Código de segurança"
+                <InputP type="number" placeholder="Código de segurança" 
                 onChange={(e)=> setCartao({...cartao, securityNumber: Number(e.target.value)})} value={cartao.securityNumber}/>
 
                 <InputP type="text" placeholder="Validade"
-                onChange={(e)=> setCartao({...cartao, expirationNumber: e.target.value})} value={cartao.expirationNumber}/>
+                onChange={(e)=> setCartao({...cartao, expirationDate: e.target.value})} value={cartao.expirationDate}/>
             </div>
 
             <Botao type="submit">ASSINAR</Botao>
@@ -77,7 +92,7 @@ const InputP = styled(InputG)`
     width: 145px;
 `
 
-const Botao = styled.div`
+const Botao = styled.button`
     height: 52px;
     width: 299px;
     left: 40px;
