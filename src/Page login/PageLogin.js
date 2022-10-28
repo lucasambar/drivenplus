@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
@@ -7,6 +8,15 @@ import Formuario from "./Formulario"
 
 
 export default function PageLogin () {
+    const navigate = useNavigate()
+
+    const token = JSON.parse(localStorage.getItem("token"))
+  
+    useEffect(() => {
+        console.log("funciona")
+      if (token !== undefined) {navigate("/home")}
+    },[token, navigate])
+  
     return (
         <Background>
             <img src={logo} alt="logo"/>
