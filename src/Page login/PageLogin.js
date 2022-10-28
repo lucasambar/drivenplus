@@ -9,14 +9,12 @@ import Formuario from "./Formulario"
 
 export default function PageLogin () {
     const navigate = useNavigate()
-
+    
     const token = JSON.parse(localStorage.getItem("token"))
-  
+
     useEffect(() => {
-        console.log("funciona")
-      if (token !== undefined) {navigate("/home")}
-    },[token, navigate])
-  
+        if (token) {navigate("/home")}
+      },[token, navigate])
     return (
         <Background>
             <img src={logo} alt="logo"/>
@@ -29,7 +27,7 @@ export default function PageLogin () {
         </Background>
     )
 }
-
+gi
 const Background = styled.div`
     background-color: ${CORES.background};
     min-height: 100vh;

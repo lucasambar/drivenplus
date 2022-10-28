@@ -36,7 +36,7 @@ export default function Formuario () {
             <Input type="password" placeholder="Senha"
             onChange={(e) => setObj({...obj, password: e.target.value})} value={obj.password}/>
 
-            <Button type="submit">Entrar</Button>
+            <Button type="submit">Cadastrar</Button>
         </Form>
     )
 }

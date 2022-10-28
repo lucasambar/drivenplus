@@ -4,8 +4,11 @@ import CORES from "../constantes/cores"
 import Pagina from "./pagina.js"
 
 export default function PageHome () {
-    const user = JSON.parse(localStorage.getItem("user"))
-    console.log(user)
+    let user = JSON.parse(localStorage.getItem("user"))
+    
+    if (!user.membership) {
+        user = JSON.parse(localStorage.getItem("plano"))
+    }
 
     return (
         <Background>

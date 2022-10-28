@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+ 
 
 export default function Formuario () {
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ export default function Formuario () {
 
         const promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", obj)
         promessa.then(response => axiosThen(response.data))
-        promessa.catch(erro => console.log(erro.response.data))
+        promessa.catch(erro => alert(erro.response.data.message))
     }
 
     return (

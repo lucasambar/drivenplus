@@ -1,9 +1,11 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 export default function Formulario ({id}) {
+    const navigate = useNavigate()
     const [cartao, setCartao] = useState({
         membershipId: id,
         cardName: "",
@@ -13,7 +15,7 @@ export default function Formulario ({id}) {
     })
 
     const token = JSON.parse(localStorage.getItem("token"))
-    console.log(cartao)
+
     function assinar (event) {
         event.preventDefault()
 
@@ -24,7 +26,7 @@ export default function Formulario ({id}) {
         }
         
         const promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", cartao, config)
-        promessa.then(response => console.log(response.data))
+        promessa.then(response => {localStorage.setItem("plano", JSON.stringify(response.data)); navigate("/home")})
         promessa.catch(erro => console.log(erro.response.data))
     }
 
