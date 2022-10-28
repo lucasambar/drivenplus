@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
-export default function Card () {
-    return <Div>Solicitar brindes</Div>
+export default function Card ({infos}) {
+    return <Div href={infos.link}>{infos.title}</Div>
 }
 
 const Div = styled.a`

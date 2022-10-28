@@ -1,37 +1,15 @@
-import axios from "axios"
-import { useContext, useEffect } from "react"
-import { useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
-import Card from "./Card"
-import Topo from "./Topo"
+
+import Pagina from "./pagina.js"
 
 export default function PageHome () {
-    const [plano, setPlano] = useState(undefined)
-    const token = JSON.parse(localStorage.getItem("token"))
-    const {user} = useContext(UserContext)
-    useEffect(() => {
-        const link = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions"
+    const user = JSON.parse(localStorage.getItem("user"))
+    console.log(user)
 
-       const config = {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        }
-
-        
-        const promessa = axios.get(link, config)
-        promessa.then(response => console.log(response.data))
-        promessa.catch(erro => console.log(erro.response.data))
-        
-    }, [token])
-    
     return (
         <Background>
-            <Topo/>
-            <ContainerCards>
-                <Card/>
-            </ContainerCards>
+            {user ? <Pagina user={user}/> : <p>ohfweioufhn</p>}
         </Background>
     )
 }
@@ -46,7 +24,4 @@ const Background = styled.div`
     align-items: center;
 
     padding-bottom: 10px;
-`
-const ContainerCards = styled.div`
-    padding-top: 48px;
 `

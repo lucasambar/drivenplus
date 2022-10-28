@@ -2,14 +2,14 @@ import styled from "styled-components"
 import CORES from "../constantes/cores"
 import user from "../imagens/user.png"
 
-export default function Topo () {
+export default function Topo ({nome, logo}) {
     return (
         <Container>
             <div>
-                <Img alt="logo plano"/>
+                <Img src={logo} alt="logo plano"/>
                 <User src={user} alt="user"/>
             </div>
-            <Texto>Olá, fulano</Texto>
+            <Texto>Olá, {nome}</Texto>
         </Container>
     )
 }

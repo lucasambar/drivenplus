@@ -1,14 +1,11 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import UserContext from "./providers/user";
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 export default function Formuario () {
     const navigate = useNavigate()
-    const {setUser} = useContext(UserContext)
-
     const [obj, setObj] = useState({
         email: "",
         password:"",
@@ -16,9 +13,8 @@ export default function Formuario () {
 
     function axiosThen (data) {
         localStorage.setItem("token", JSON.stringify(data.token))
-        
-        setUser(data)
-        
+        localStorage.setItem("user", JSON.stringify(data))
+
         if (!data.membership) {navigate("/subscriptions")}
         else {navigate("/home")}
     }
