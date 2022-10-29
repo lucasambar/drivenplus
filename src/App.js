@@ -9,13 +9,14 @@ import PageLogin from "./Page login/PageLogin";
 import PagePlano from "./page plano/PagePlano";
 import PageHome from "./page home/PageHome";
 import UserContext from "./providers/user";
+import PageUser from "./page user/pageUser";
 
 function App() {
 
   const [user, setUser] = useState(undefined)
   
   console.log(user)
-  
+
   return (
     <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/subscriptions" element={<PageIncricao/>}/>
             <Route path="/subscriptions/:idPlano" element={<PagePlano/>}/>
             <Route path="/home" element={<PageHome/>}/>
+            <Route path="/users/:idUser" element={<PageUser/>}/>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

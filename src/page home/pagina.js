@@ -27,7 +27,7 @@ export default function Pagina ({user, nome}) {
 
     return (
         <>
-            <Topo nome={nome} logo={user.membership.image}/>
+            <Topo nome={nome} logo={user.membership.image} id={user.id}/>
             <ContainerCards>
                 <div>
                     {perks.map((infos) => <Card infos={infos} key={infos.id}/>)}

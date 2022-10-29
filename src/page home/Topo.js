@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 import user from "../imagens/user.png"
 
-export default function Topo ({nome, logo}) {
+export default function Topo ({nome, logo, id}) {
     return (
         <Container>
             <div>
                 <Img src={logo} alt="logo plano"/>
-                <User src={user} alt="user"/>
+                <Link to={`/users/${id}`}>
+                    <User src={user} alt="user"/>
+                </Link>
             </div>
             <Texto>Olá, {nome}</Texto>
         </Container>
@@ -35,6 +38,8 @@ const User = styled.img`
     width: 34px;
 
     margin: 22px 22px;
+
+    cursor: pointer;
 `
 const Img = styled.img`
     height: 50.866729736328125px;
