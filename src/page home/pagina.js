@@ -21,7 +21,7 @@ export default function Pagina ({user, nome}) {
         }
 
         const promessa = axios.delete("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", config)
-        promessa.then(() => {localStorage.removeItem("user"); localStorage.removeItem("plano"); navigate("/subscriptions")})
+        promessa.then(() => {navigate("/subscriptions")})
         promessa.catch(erro => alert(erro.response.data.message))
     }
 

@@ -5,13 +5,14 @@ import styled from "styled-components"
 import CORES from "../constantes/cores"
 import Modal from "./Modal"
 
-export default function Formulario ({id, plano}) {
+export default function Formulario ({plano}) {
     const [modal, setModal] = useState(false)
+    const user = JSON.parse(localStorage.getItem("user"))
     
     const navigate = useNavigate()
 
     const [cartao, setCartao] = useState({
-        membershipId: id,
+        membershipId: user.id,
         cardName: "",
         cardNumber: "",
         securityNumber: undefined,
@@ -31,7 +32,7 @@ export default function Formulario ({id, plano}) {
         
         const promessa = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", cartao, config)
         promessa.then(response => {localStorage.setItem("plano", JSON.stringify(response.data)); navigate("/home")})
-        promessa.catch(erro => console.log(erro.response.data))
+        promessa.catch(erro => alert(erro.response.data.message))
     }
 
     return (

@@ -13,12 +13,11 @@ import UserContext from "./providers/user";
 function App() {
 
   const [user, setUser] = useState(undefined)
-  const [nome, setNome] = useState("")
-  const [plano, setPlano] = useState(undefined)
-
-
+  
+  console.log(user)
+  
   return (
-    <UserContext.Provider value={{user, setUser, plano, setPlano, nome, setNome}}>
+    <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
         <GlobalStyle/>
         <Routes>

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import Loading from "../providers/loading"
 
 import Pagina from "./pagina.js"
 
@@ -13,7 +14,7 @@ export default function PageHome () {
 
     return (
         <Background>
-            {user ? <Pagina user={user} nome={nome}/> : <p>ohfweioufhn</p>}
+            {user ? <Pagina user={user} nome={nome}/> : <Loading/>}
         </Background>
     )
 }

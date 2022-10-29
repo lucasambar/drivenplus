@@ -1,20 +1,24 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
 
 import logo from "../imagens/logo.png"
+import UserContext from "../providers/user"
 import Formuario from "./Formulario"
 
 
 export default function PageLogin () {
     const navigate = useNavigate()
-    
+    const {setUser} = useContext(UserContext)
+
     const token = JSON.parse(localStorage.getItem("token"))
 
+
     useEffect(() => {
-        if (token) {navigate("/home")}
-      },[token, navigate])
+        if (token) {navigate("/home"); setUser(JSON.parse(localStorage.getItem("user")))}
+      },[token, navigate, setUser])
+    
     return (
         <Background>
             <img src={logo} alt="logo"/>
