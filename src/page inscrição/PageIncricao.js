@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import Loading from "../providers/loading"
 import UserContext from "../providers/user"
 import CardPlano from "./CardPlano"
 
@@ -25,7 +26,7 @@ export default function PageIncricao () {
         <Background>
             <Texto>Escolha seu Plano</Texto>
             <Container>
-                {planos ? planos.map(infos => <CardPlano infos={infos} key={infos.id}/>) : <p>oi</p>}
+                {planos ? planos.map(infos => <CardPlano infos={infos} key={infos.id}/>) : <Loading/>}
             </Container>
         </Background>
     )

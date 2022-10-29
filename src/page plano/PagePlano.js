@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import Loading from "../providers/loading"
 import Conteudo from "./paginaa"
 
 
@@ -28,7 +29,7 @@ export default function PagePlano () {
     
     return (
         <>
-            {plano ? <Conteudo plano={plano}/> : <p>jbjsodf</p>}
+            {plano ? <Conteudo plano={plano}/> : <Loading/>}
         </>
     )
 }

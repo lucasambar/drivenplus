@@ -7,7 +7,7 @@ import Card from "./Card"
 import Topo from "./Topo"
 
 
-export default function Pagina ({user}) {
+export default function Pagina ({user, nome}) {
     const perks = user.membership.perks
     const navigate = useNavigate()
 
@@ -21,13 +21,13 @@ export default function Pagina ({user}) {
         }
 
         const promessa = axios.delete("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", config)
-        promessa.then(() => {localStorage.removeItem("user"); navigate("/subscriptions")})
-        promessa.catch(erro => console.log(erro.response.data))
+        promessa.then(() => {localStorage.removeItem("user"); localStorage.removeItem("plano"); navigate("/subscriptions")})
+        promessa.catch(erro => alert(erro.response.data.message))
     }
 
     return (
         <>
-            <Topo nome={user.name} logo={user.membership.image}/>
+            <Topo nome={nome} logo={user.membership.image}/>
             <ContainerCards>
                 <div>
                     {perks.map((infos) => <Card infos={infos} key={infos.id}/>)}

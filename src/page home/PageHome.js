@@ -5,14 +5,15 @@ import Pagina from "./pagina.js"
 
 export default function PageHome () {
     let user = JSON.parse(localStorage.getItem("user"))
-    
+    let nome = user.name
+
     if (!user.membership) {
         user = JSON.parse(localStorage.getItem("plano"))
     }
 
     return (
         <Background>
-            {user ? <Pagina user={user}/> : <p>ohfweioufhn</p>}
+            {user ? <Pagina user={user} nome={nome}/> : <p>ohfweioufhn</p>}
         </Background>
     )
 }

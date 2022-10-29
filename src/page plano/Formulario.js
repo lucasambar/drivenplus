@@ -3,9 +3,13 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/cores"
+import Modal from "./Modal"
 
-export default function Formulario ({id}) {
+export default function Formulario ({id, plano}) {
+    const [modal, setModal] = useState(false)
+    
     const navigate = useNavigate()
+
     const [cartao, setCartao] = useState({
         membershipId: id,
         cardName: "",
@@ -31,7 +35,8 @@ export default function Formulario ({id}) {
     }
 
     return (
-        <Form onSubmit={assinar}>
+    <>
+        <Form  onSubmit={(event)=>{event.preventDefault();setModal(true)}}>
             <InputG type="text" placeholder="Nome impresso no cartão" 
             onChange={(e)=> setCartao({...cartao, cardName: e.target.value})} value={cartao.cardName}/>
 
@@ -48,6 +53,9 @@ export default function Formulario ({id}) {
 
             <Botao type="submit">ASSINAR</Botao>
         </Form>
+
+        {modal ? <Modal assinar={assinar} plano={plano} setModal={setModal}/> : <></>}
+    </>
     )
 }
 

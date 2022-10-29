@@ -27,7 +27,7 @@ export default function PageLogin () {
         </Background>
     )
 }
-gi
+
 const Background = styled.div`
     background-color: ${CORES.background};
     min-height: 100vh;

@@ -18,7 +18,7 @@ export default function Conteudo ({plano}) {
             </Seta>
             <Topo plano={plano}/> 
             <Infos perks={plano.perks} preco={plano.price}/>
-            <Formulario id={plano.id}/>
+            <Formulario id={plano.id} plano={plano}/>
         </Background>
     )
 }
