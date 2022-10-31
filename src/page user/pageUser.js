@@ -19,10 +19,10 @@ export default function PageUser () {
                 <img src={back} alt="seta voltar" onClick={() => navigate("/home")}/>
             </Seta>
             <Form>
-                <Input value={dados.nome} disabled/>
+                <Input value={dados.nome}/>
                 <Input value={dados.cpf} disabled/>
                 <Input value={dados.email} disabled/>
-                <Button>ATUALIZAR</Button>
+                <Button onClick={() => navigate("./update")}>ATUALIZAR</Button>
             </Form>
         </Background>
     )

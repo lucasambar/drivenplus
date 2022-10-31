@@ -10,6 +10,7 @@ import PagePlano from "./page plano/PagePlano";
 import PageHome from "./page home/PageHome";
 import UserContext from "./providers/user";
 import PageUser from "./page user/pageUser";
+import PageUpdate from "./page update/pageUpdate";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/subscriptions/:idPlano" element={<PagePlano/>}/>
             <Route path="/home" element={<PageHome/>}/>
             <Route path="/users/:idUser" element={<PageUser/>}/>
+            <Route path="/users/:idUser/update" element={<PageUpdate/>}/>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
