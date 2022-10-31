@@ -8,12 +8,12 @@ export default function PageHome () {
     let user = JSON.parse(localStorage.getItem("user"))
 
     let nome = user.name
+    const plano = JSON.parse(localStorage.getItem("plano"))
 
-    if (!plano) {
+g    if (!plano) {
         localStorage.setItem("plano", JSON.stringify(user.membership)) 
     }
 
-    const plano = JSON.parse(localStorage.getItem("plano"))
 
     return (
         <Background>

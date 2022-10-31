@@ -8,9 +8,9 @@ export default function Topo ({nome, logo, id}) {
         <Container>
             <div>
                 <Img src={logo} alt="logo plano"/>
-                <Link to={`/users/${id}`}>
+                {/* <Link to={`/users/${id}`}> */}
                     <User src={user} alt="user"/>
-                </Link>
+                {/* </Link> */}
             </div>
             <Texto>Olá, {nome}</Texto>
         </Container>
